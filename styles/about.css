@@ -1,0 +1,29 @@
+/* About section */
+.about-section {
+    background-color: #11192F;
+    color: white;
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    /* display: none; */
+}
+
+.about-section-article {
+    margin-bottom: 5%;
+}
+
+.about-section-heading {
+    margin-bottom: 3%;
+    font-family: 'Inter';
+}
+
+.about-section-text {
+    margin: 0 0 2% 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.about-br {
+    margin-bottom: 5px;
+}
