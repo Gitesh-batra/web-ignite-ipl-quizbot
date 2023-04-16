@@ -20,8 +20,8 @@
 ```
 
 Meta tags are used to provide information about the document to the browser.
-- Charset is used to specify the character encoding for the HTML document.
-- X-UA-Compatible is used to specify the compatibility mode of the browser.
+- Charset is used to specify the character encoding for the HTML document. UTF-8 is the most commonly used character encoding. 8-bit Unicode Transformation Format.
+- X-UA-Compatible is used to specify the compatibility mode of the browser.like IE=edge, it is used to specify the latest version of IE.
 - Viewport is used to specify the viewport of the browser.
 
 > Viewport is the user's visible area of a web page. It varies with the device, and will be smaller on a mobile phone than on a computer screen.
