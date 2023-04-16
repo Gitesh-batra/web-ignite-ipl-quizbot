@@ -62,6 +62,9 @@ function handleQuiz(data) {
     quizNextBtn,
     quizSection,
     quizScorecard,
+    correctAnswer,
+    wrongAnswer,
+    blank,
   });
 
   quizSectionContainer.classList.add("show");

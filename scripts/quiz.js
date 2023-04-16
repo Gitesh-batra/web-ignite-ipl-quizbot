@@ -6,6 +6,9 @@ class Quiz {
     quizNextBtn,
     quizSection,
     quizScorecard,
+    correctAnswer,
+    wrongAnswer,
+    blank,
   }) {
     this.questions = questions || [];
     this.currentQuestion = 0;
@@ -21,16 +24,21 @@ class Quiz {
     this.quizSection = quizSection;
     this.quizScorecard = quizScorecard;
 
-    this.renderQuestion(this.currentQuestion);
+    this.correctAnswer = correctAnswer;
+    this.wrongAnswer = wrongAnswer;
+    this.blank = blank;
+
+    this.renderQuestion();
     this.renderScoreCard();
   }
 
-  renderQuestion(questionNum) {
+  renderQuestion() {
+    let questionNum = this.currentQuestion;
     const question = this.questions[questionNum];
     this.quizQuestion.textContent = question.question;
 
     for (let i = 0; i < this.quizOptions.length; i++) {
-      quizOptions[i].textContent = question.options[i];
+      this.quizOptions[i].textContent = question.options[i];
     }
   }
 
@@ -41,17 +49,17 @@ class Quiz {
       const score = this.scoreCard[i];
 
       if (score === null) {
-        this.quizScorecard.innerHTML += blank;
+        this.quizScorecard.innerHTML += this.blank;
       } else if (score) {
-        this.quizScorecard.innerHTML += correctAnswer;
+        this.quizScorecard.innerHTML += this.correctAnswer;
       } else {
-        this.quizScorecard.innerHTML += wrongAnswer;
+        this.quizScorecard.innerHTML += this.wrongAnswer;
       }
     }
   }
 
   handleNextQuestion() {
-    if (this.currentQuestion === this.questions.length) {
+    if (this.currentQuestion >= this.questions.length) {
       return;
     }
 
@@ -76,7 +84,7 @@ class Quiz {
     this.currentQuestion += 1;
 
     if (this.currentQuestion < this.questions.length) {
-      this.renderQuestion(this.currentQuestion);
+      this.renderQuestion();
     }
 
     selectedOptionElement.checked = false;
