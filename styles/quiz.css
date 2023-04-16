@@ -1,12 +1,19 @@
 .quiz-section {
     height: 100vh;
     background-color: #11192F;
-    display: none;
-    /* display: flex; */
+    display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: start;
     padding: 5%;
+    position: fixed;
+    right: -100%;
+    width: 66vw;
+    transition: all ease-out 0.3s;
+}
+
+.show {
+    right: 0;
 }
 
 #quiz__section {

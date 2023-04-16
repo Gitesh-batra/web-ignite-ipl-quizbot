@@ -1,7 +1,7 @@
 const quizGenForm = document.querySelector("#quiz__generate__form");
 
+const quizSectionContainer = document.querySelector(".quiz-section");
 const quizSection = document.querySelector("#quiz__section");
-const quizQuestionCounter = document.querySelector("#quiz__question__counter");
 const quizQuestion = document.querySelector("#quiz__question__content");
 const quizOptions = document.querySelectorAll(
   "#quiz__section__options .option > label"
@@ -21,19 +21,6 @@ const blank = `<div class="blank"></div>`;
 
 let quiz;
 
-let mockData = [
-  {
-    question: "What is the capital of India?",
-    answers: ["New Delhi", "Mumbai", "Kolkata", "Chennai"],
-    correct: "0",
-  },
-  {
-    question: "What is the capital of Pakistan?",
-    answers: ["Islamabad", "Karachi", "Lahore", "Peshawar"],
-    correct: "2",
-  },
-];
-
 quizGenForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -41,7 +28,11 @@ quizGenForm.addEventListener("submit", (e) => {
     'input[name="difficulty"]:checked'
   ).value;
 
-  fetch(`?difficulty=${quizDifficulty}`)
+  quizSectionContainer.classList.remove("show");
+
+  fetch(
+    `https://web-ignite-api.onrender.com/questions?difficulty=${quizDifficulty}`
+  )
     .then((res) => {
       if (res.ok) {
         return res.json();
@@ -57,16 +48,21 @@ quizGenForm.addEventListener("submit", (e) => {
     });
 });
 
-handleQuiz();
+quizSection.addEventListener("submit", (e) => {
+  e.preventDefault();
+  if (!quiz) return;
+  quiz.handleNextQuestion();
+});
 
 function handleQuiz(data) {
   quiz = new Quiz({
-    questions: mockData,
-    quizQuestionCounter,
+    questions: data,
     quizQuestion,
     quizOptions,
     quizNextBtn,
     quizSection,
     quizScorecard,
   });
+
+  quizSectionContainer.classList.add("show");
 }

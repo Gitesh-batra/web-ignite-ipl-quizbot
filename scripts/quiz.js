@@ -1,7 +1,6 @@
 class Quiz {
   constructor({
     questions,
-    quizQuestionCounter,
     quizQuestion,
     quizOptions,
     quizNextBtn,
@@ -16,7 +15,6 @@ class Quiz {
       this.scoreCard.push(null);
     }
 
-    this.quizQuestionCounter = quizQuestionCounter;
     this.quizQuestion = quizQuestion;
     this.quizOptions = quizOptions;
     this.quizNextBtn = quizNextBtn;
@@ -25,22 +23,14 @@ class Quiz {
 
     this.renderQuestion(this.currentQuestion);
     this.renderScoreCard();
-
-    this.quizSection.addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      this.handleNextQuestion();
-    });
   }
 
   renderQuestion(questionNum) {
     const question = this.questions[questionNum];
-
-    this.quizQuestionCounter.textContent = this.currentQuestion + 1;
     this.quizQuestion.textContent = question.question;
 
     for (let i = 0; i < this.quizOptions.length; i++) {
-      quizOptions[i].textContent = question.answers[i];
+      quizOptions[i].textContent = question.options[i];
     }
   }
 
@@ -75,7 +65,7 @@ class Quiz {
       return;
     }
 
-    if (selectedOption === this.questions[this.currentQuestion].correct) {
+    if (selectedOption == this.questions[this.currentQuestion].answer) {
       this.scoreCard[this.currentQuestion] = true;
     } else {
       this.scoreCard[this.currentQuestion] = false;
