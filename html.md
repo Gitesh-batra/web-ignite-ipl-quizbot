@@ -29,7 +29,7 @@ Meta tags are used to provide information about the document to the browser.
 
 > Viewport is the user's visible area of a web page. It varies with the device, and will be smaller on a mobile phone than on a computer screen.
 
-![Image of viewport](./assets/viewport.png)
+![Image of viewport](./demo/viewport.png)
 
 ### Delclairing a Title
 
@@ -187,7 +187,7 @@ The heading section contains the heading and the logo. The heading is a `h1` tag
 >
 > The `article` element specifies independent, self-contained content.The `section` element defines section in a document.
 
-![Image of section](./assets/semantic.png)
+![Image of section](./demo/semantic.png)
 
 ## Working on the Quiz section
 
